@@ -20,8 +20,5 @@ class Employee {
     } // Returns 'Employee'
 }
 
-
-
-
 module.exports = Employee;
 // TODO: Write code to define and export the Employee class
