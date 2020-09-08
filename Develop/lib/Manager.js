@@ -6,6 +6,11 @@ class Manager extends Employee{
         this.officeNumber = officeNumber
         this.role = "Manager"
     }
-}
-module.exports = Manager;
+
+
+
+    getOfficeNumber() {
+        console.log(`#${this.officeNumber}`);
+    }
+} module.exports = Manager;
 // TODO: Write code to define and export the Manager class. HINT: This class should inherit from Employee.
