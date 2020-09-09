@@ -14,7 +14,7 @@ const outputarray = [];
 const writeFileAsync = util.promisify(fs.writeFile);
 //const teamsgendoc = prompt(answers);
 
-function prompt() {
+function addmanager() {
   inquirer.prompt([
     {
       type: "input",
@@ -33,7 +33,7 @@ function prompt() {
     },
     {
       type: "input",
-      name: "officeNumber",
+      name: "getOffice",
       message: "What is your manager's office number?"
     },
     {
@@ -44,18 +44,18 @@ function prompt() {
     },
   ])
   .then(answers => {
-    manager = new Manager(answers.id, answers.name, answers.email, answers.officeNumber)
+    const manager = new Manager(answers.id, answers.name, answers.email, answers.officeNumber)
     outputarray.push(manager)
-    if (answers.getRole = "Engineer") {
+    if (answers.getRole === "Engineer") {
       addengineer()
     }
-    else if (answers.getRole = "Intern") {
+    else if (answers.getRole === "Intern") {
       addintern()
     }
-    else if (answers.getRole = "I dont want to add anymore team members") {
+    else if (answers.getRole === "I dont want to add anymore team members") {
       render(outputarray)
-      teamsgen()
-      return 
+      
+       
     }
   })
   .catch(error => {
@@ -82,7 +82,7 @@ function addengineer() {
     },
     {
       type: "input",
-      name: "github",
+      name: "getGithub",
       message: "What is your engineers's Github?"
     },
     {
@@ -94,20 +94,20 @@ function addengineer() {
   ])
 
   .then(answers => {
-    engineer = new Engineer(answers.id, answers.name, answers.email, answers.github)
+    const engineer = new Engineer(answers.id, answers.name, answers.email, answers.github)
     outputarray.push(engineer)
 
-    if (answers.getRole = "Engineer") {
+    if (answers.getRole === "Engineer") {
       addengineer()
     }
 
-    else if (answers.getRole = "Intern") {
+    else if (answers.getRole === "Intern") {
       addintern()
     }
-    else if (answers.getRole = "I dont want to add anymore team members") {
+    else if (answers.getRole === "I dont want to add anymore team members") {
       render(outputarray)
-      teamsgen()
-      return
+      
+      
     }
   })
   .catch(error => {
@@ -135,7 +135,7 @@ function addintern() {
     },
     {
       type: "input",
-      name: "github",
+      name: "getSchool",
       message: "What is your intern's school?"
     },
     {
@@ -146,18 +146,18 @@ function addintern() {
     }
   ])
   .then(answers => {
-    intern = new Intern(answers.id, answers.name, answers.email, answers.school)
+   const intern = new Intern(answers.id, answers.name, answers.email, answers.school)
     outputarray.push(intern)
-    if (answers.getRole = "Engineer") {
+    if (answers.getRole === "Engineer") {
       addengineer()
     }
-    else if (answers.getRole = "Intern") {
+    else if (answers.getRole === "Intern") {
       addintern()
     }
-    else if (answers.getRole = "I dont want to add anymore team members") {
+    else if (answers.getRole === "I dont want to add anymore team members") {
       render(outputarray)
-      teamsgen()
-      return
+      
+      
     }
   })
   .catch(error => {
@@ -166,9 +166,5 @@ function addintern() {
 
 }
 
-function teamsgen(){
-  const teamsgendoc = prompt(answers);
-  return writeFileAsync(team.html, teamsgendoc)
-}
 
-prompt()
+addmanager()

@@ -9,6 +9,8 @@ class Intern extends Employee{
 
     getSchool() {
         console.log(`#${this.school}`);
+        return this.school;
     }
-}module.exports = Intern;
+}
+module.exports = Intern;
 // TODO: Write code to define and export the Intern class.  HINT: This class should inherit from Employee.
