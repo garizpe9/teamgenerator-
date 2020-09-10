@@ -7,12 +7,11 @@ const fs = require("fs");
 const util = require("util");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
-
 const render = require("./lib/htmlRenderer");
 const Employee = require("./lib/Employee");
 const outputarray = [];
 const writeFileAsync = util.promisify(fs.writeFile);
-//const teamsgendoc = prompt(answers);
+
 
 function addmanager() {
   inquirer.prompt([
@@ -33,7 +32,7 @@ function addmanager() {
     },
     {
       type: "input",
-      name: "getOffice",
+      name: "getOfficeNumber",
       message: "What is your manager's office number?"
     },
     {
@@ -44,7 +43,7 @@ function addmanager() {
     },
   ])
   .then(answers => {
-    const manager = new Manager(answers.id, answers.name, answers.email, answers.officeNumber)
+    const manager = new Manager(answers.id, answers.name, answers.email, answers.getOfficeNumber)
     outputarray.push(manager)
     if (answers.getRole === "Engineer") {
       addengineer()
@@ -53,9 +52,13 @@ function addmanager() {
       addintern()
     }
     else if (answers.getRole === "I dont want to add anymore team members") {
+      //console.log (outputarray)
+     // console.log(render())
+      //console.log (render(outputarray))
       render(outputarray)
+
       
-       
+
     }
   })
   .catch(error => {
