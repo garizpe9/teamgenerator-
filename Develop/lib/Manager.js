@@ -6,13 +6,13 @@ class Manager extends Employee{
         this.officeNumber = parseInt(officeNumber)
         this.role = "Manager"
     }
-
+    getOfficeNumber() {
+        return (this.officeNumber)
+    }
     getRole(){
         return this.role;
     } 
 
-    getOfficeNumber() {
-        return (this.officeNumber)
-    }
+
 } module.exports = Manager;
 // TODO: Write code to define and export the Manager class. HINT: This class should inherit from Employee.
