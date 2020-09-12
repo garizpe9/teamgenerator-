@@ -28,7 +28,8 @@ Node is needed to create the site.
 Jest is needed testing.
 
 To view usage, click on link to youtube:
-[![Example of Usage](https://www.youtube.com/embed/8Zid-kAgjgg)]
+[![Example of Usage](https://img.youtube.com/vi/8xmdjcRvGro/0.jpg)](https://www.youtube.com/embed/8xmdjcRvGro)
+
 
 ## License
 [![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
