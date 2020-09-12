@@ -10,8 +10,6 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 const Employee = require("./lib/Employee");
 const outputarray = [];
-const writeFileAsync = util.promisify(fs.writeFile);
-
 
 function addmanager() {
   inquirer.prompt([
@@ -42,28 +40,24 @@ function addmanager() {
       choices: ["Engineer", "Intern", "I dont want to add anymore team members"]
     },
   ])
-  .then(answers => {
-    const manager = new Manager(answers.id, answers.name, answers.email, answers.getOfficeNumber)
-    outputarray.push(manager)
-    if (answers.getRole === "Engineer") {
-      addengineer()
-    }
-    else if (answers.getRole === "Intern") {
-      addintern()
-    }
-    else if (answers.getRole === "I dont want to add anymore team members") {
-      //console.log (outputarray)
-     // console.log(render())
-      //console.log (render(outputarray))
-      render(outputarray)
-
-      
-
-    }
-  })
-  .catch(error => {
-    console.log(error);
-  });
+    .then(answers => {
+      const manager = new Manager(answers.name, answers.id, answers.email, answers.getOfficeNumber)
+      outputarray.push(manager)
+      if (answers.getRole === "Engineer") {
+        addengineer()
+      }
+      else if (answers.getRole === "Intern") {
+        addintern()
+      }
+      else if (answers.getRole === "I dont want to add anymore team members") {
+        fs.mkdirSync(OUTPUT_DIR)
+        fs.writeFileSync(outputPath, render(outputarray), 'utf-8')
+        
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
 }
 
 function addengineer() {
@@ -96,27 +90,28 @@ function addengineer() {
     },
   ])
 
-  .then(answers => {
-    const engineer = new Engineer(answers.id, answers.name, answers.email, answers.github)
-    outputarray.push(engineer)
+    .then(answers => {
+      const engineer = new Engineer(answers.name, answers.id, answers.email, answers.getGithub)
+      outputarray.push(engineer)
 
-    if (answers.getRole === "Engineer") {
-      addengineer()
-    }
+      if (answers.getRole === "Engineer") {
+        addengineer()
+      }
 
-    else if (answers.getRole === "Intern") {
-      addintern()
-    }
-    else if (answers.getRole === "I dont want to add anymore team members") {
-      render(outputarray)
-      
-      
-    }
-  })
-  .catch(error => {
-    console.log(error)
+      else if (answers.getRole === "Intern") {
+        addintern()
+      }
+      else if (answers.getRole === "I dont want to add anymore team members") {
+       
+        fs.mkdirSync(OUTPUT_DIR)
+        fs.writeFileSync(outputPath, render(outputarray), 'utf-8')
 
-  })
+      }
+    })
+    .catch(error => {
+      console.log(error)
+
+    })
 };
 
 function addintern() {
@@ -148,24 +143,23 @@ function addintern() {
       choices: ["Engineer", "Intern", "I dont want to add anymore team members"]
     }
   ])
-  .then(answers => {
-   const intern = new Intern(answers.id, answers.name, answers.email, answers.school)
-    outputarray.push(intern)
-    if (answers.getRole === "Engineer") {
-      addengineer()
-    }
-    else if (answers.getRole === "Intern") {
-      addintern()
-    }
-    else if (answers.getRole === "I dont want to add anymore team members") {
-      render(outputarray)
-      
-      
-    }
-  })
-  .catch(error => {
-    console.log(error);
-  })
+    .then(answers => {
+      const intern = new Intern(answers.name, answers.id, answers.email, answers.getSchool)
+      outputarray.push(intern)
+      if (answers.getRole === "Engineer") {
+        addengineer()
+      }
+      else if (answers.getRole === "Intern") {
+        addintern()
+      }
+      else if (answers.getRole === "I dont want to add anymore team members") {
+        fs.mkdirSync(OUTPUT_DIR)
+        fs.writeFileSync(outputPath, render(outputarray), 'utf-8')
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    })
 
 }
 

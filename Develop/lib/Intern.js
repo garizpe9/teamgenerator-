@@ -5,7 +5,12 @@ class Intern extends Employee{
         super(id, name, email)
         this.school = school
         this.role= "Intern"
+        
     }
+
+    getRole(){
+        return this.role;
+      } 
 
     getSchool() {
         console.log(`#${this.school}`);
