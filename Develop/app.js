@@ -55,9 +55,6 @@ function addmanager() {
         
       }
     })
-    .catch(error => {
-      console.log(error);
-    });
 }
 
 function addengineer() {
@@ -108,10 +105,6 @@ function addengineer() {
 
       }
     })
-    .catch(error => {
-      console.log(error)
-
-    })
 };
 
 function addintern() {
@@ -157,11 +150,6 @@ function addintern() {
         fs.writeFileSync(outputPath, render(outputarray), 'utf-8')
       }
     })
-    .catch(error => {
-      console.log(error);
-    })
-
 }
-
 
 addmanager()
