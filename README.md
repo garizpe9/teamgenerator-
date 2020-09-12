@@ -1,6 +1,10 @@
 # Teamgenerator
 
-![project image](./NPM run test.jpeg)
+<img src=https://github.com/garizpe9/teamgenerator-/blob/master/NPM%20Run%20Test.JPG>
+
+
+<img src=https://github.com/garizpe9/teamgenerator-/blob/master/team.JPG>
+
 
 ## Table of Contents
 * [Description](#description)
